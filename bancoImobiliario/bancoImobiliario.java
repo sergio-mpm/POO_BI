@@ -8,7 +8,7 @@ public class bancoImobiliario extends JFrame {
 	public final int ALT_DEFAULT=800;
 	
 	public bancoImobiliario() {
-		setTitle("Banco Imobiliário");
+		setTitle("Banco Imobiliario");
 		   Toolkit tk=Toolkit.getDefaultToolkit();
 		   Dimension screenSize=tk.getScreenSize();
 		   int sl=screenSize.width;
@@ -22,12 +22,7 @@ public class bancoImobiliario extends JFrame {
 	}
 	
 	public static void main(String args[]) {
-		//bancoImobiliario jg = new bancoImobiliario();
-		Dados r = new Dados();
-		if(r.getDierolled() == 0)
-			System.out.println("Die not yet rolled.");
-		for(int test = 0; test < 100; test++) {
-			r.dieShow(r.dieRoll(),r.dieRoll()); //teste para verificação da rolagem de dado.
-		}
+
+		bancoImobiliario jg = new bancoImobiliario();
 	}
 }

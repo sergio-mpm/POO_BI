@@ -7,28 +7,29 @@ import java.io.*;
 import javax.imageio.*;
 
 public class Jogadores {
-	protected int jogadores[];
 	protected int falencia = 0;
 	protected int vitoria = 0;
 	protected int dinheiro;
-	
-	public Jogadores(int n) {
-		for(int i = 0; i<n; i++) {
-			jogadores[i] = 1;
-			dinheiro = 10000;
-		}
+	protected int territorio = 0;
+
+	public int getTerritorio() {
+		return territorio;
+	}
+
+	public void setTerritorio( int territorio ) {
+		this.territorio = territorio;
+	}
+
+	public void recebeDinheiro(int dinheiro ) {
+		this.dinheiro += dinheiro;
 	}
 	
-	public void recebeDinheiro(int n) {
-		this.dinheiro += n;
+	public void pagaJogador( int dinheiro, Jogadores outroJogador ) {
+		pagaDinheiro( dinheiro );
+		outroJogador.recebeDinheiro( dinheiro );
 	}
 	
-	public void pagaJogador(int n, Jogadores j) {
-		this.dinheiro -= n;
-		j.recebeDinheiro(n);
-	}
-	
-	public void pagaBanco(int n) {
-		this.dinheiro -= n;
+	public void pagaDinheiro( int dinheiro ) {
+		this.dinheiro -= dinheiro;
 	}
 }
