@@ -8,7 +8,7 @@ import javax.imageio.*;
 import java.util.Random;
 
 public class Dados extends Regras{
-	private int dierolled=0;
+	private int dierolled = 0;
 	
 	public int dieRoll() {
 		Random rand = new Random();
