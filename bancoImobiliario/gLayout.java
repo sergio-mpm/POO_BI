@@ -22,8 +22,6 @@ public class gLayout extends JPanel{
 	private gLayout p = this;
 	private Regras regras = new Regras();
 	private List<Integer> coordJogadores = new ArrayList();
-	private List<Jogadores> jogadores = new ArrayList();
-	private List<Territorio> territorios = new ArrayList();
 	private int dado1 = 6;
 	private int dado2 = 6;
 
@@ -53,7 +51,7 @@ public class gLayout extends JPanel{
 				numJogadores = startGame();
 			}
 			regras.setPlayers( numJogadores );
-			regras.setTerritorios();
+			regras.setCoordenadasDosTerritorios();
 		}
 		catch(IOException e) {
 			System.out.println(e.getMessage());
@@ -69,23 +67,30 @@ public class gLayout extends JPanel{
 
 				int x = e.getX();
 				int y = e.getY();
-				int vez = regras.getVez() * 2;
+				int vez = regras.getVez();
 				Dados dados = new Dados();
 				dado1 = dados.dieRoll();
 				dado2 = dados.dieRoll();
-				int dadosTotal = 6;
-				Jogadores jogador = regras.getJogadores().get( vez / 2 );
+				int dadosTotal = dado1 + dado2;
+				Jogadores jogador = regras.getJogadores().get( vez );
 				int territorioJog = jogador.getTerritorio();
 				int novoTerritorio = territorioJog + dadosTotal;
+
+				if( novoTerritorio > 39 ){
+					novoTerritorio -= 40;
+				}
+
 				novoTerritorio = ( novoTerritorio > 40 ) ? novoTerritorio - 40 : novoTerritorio;
 				jogador.setTerritorio( novoTerritorio );
 
-				int coordX = coordJogadores.get( vez );
-				int coordY = coordJogadores.get( vez + 1 );
-				int coordTerX = regras.getTerritorios().get( novoTerritorio ).getCoordX();
-				int coordTerY = regras.getTerritorios().get( novoTerritorio ).getCoordY();
-				coordJogadores.set( vez, coordTerX + ( ( vez / 2 ) * 10 ) );
-				coordJogadores.set( vez + 1, coordTerY );
+				int coordX = regras.getNovaCoordenadaDoJogador( jogador )[0];
+				int coordY = regras.getNovaCoordenadaDoJogador( jogador )[1];
+
+				coordJogadores.set( vez * 2, coordX );
+				coordJogadores.set( ( vez * 2 ) + 1, coordY );
+
+				regras.setCoordenadasDosTerritorios();
+
 
 				System.out.println(x+" | "+y);
 
@@ -115,10 +120,12 @@ public class gLayout extends JPanel{
 			String msg = "Quantos jogadores?\nMin: 2   Max: 6";
 			int numJogadores = Integer.parseInt( JOptionPane.showInputDialog(p, msg) );
 			regras.setVez( numJogadores );
-			for( int i = 0; i < numJogadores; i++ ){
-				coordJogadores.add( 605 + (i * 10) );
-				coordJogadores.add( 655 );
+			regras.setCoordenadasDosTerritorios();
+			for( int i = 0; i < numJogadores; i++ ) {
+				coordJogadores.add(595 + (i * 15));
+				coordJogadores.add(635);
 			}
+
 			return numJogadores;
 		}
 		catch( NumberFormatException e ) {

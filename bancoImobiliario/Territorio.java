@@ -19,4 +19,12 @@ public class Territorio {
     public void setCoordY(int coordY) {
         this.coordY = coordY;
     }
+
+    public void setCusto(int custo) {
+        this.custo = custo;
+    }
+
+    public int getCusto() {
+        return custo;
+    }
 }

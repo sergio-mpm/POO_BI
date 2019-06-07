@@ -1,16 +1,19 @@
 package bancoImobiliario;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import javax.imageio.*;
-
 public class Jogadores {
-	protected int falencia = 0;
-	protected int vitoria = 0;
-	protected int dinheiro;
-	protected int territorio = 0;
+	private int id;
+	private boolean falencia = false;
+	private int dinheiro;
+	private int territorio = 0;
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
 
 	public int getTerritorio() {
 		return territorio;
