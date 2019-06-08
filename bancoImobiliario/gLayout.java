@@ -97,7 +97,7 @@ public class gLayout extends JPanel{
 //				dado2 = 4;
 
 				int dadosTotal = dado1 + dado2;
-//				int dadosTotal = 10;
+//				int dadosTotal = 1;
 				Jogadores jogador = regras.getJogadores().get( vez );
 				if( dado1 == dado2 ){
 					regras.dadosIguais();
