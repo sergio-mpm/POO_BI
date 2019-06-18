@@ -1,16 +1,25 @@
 package bancoImobiliario;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import javax.imageio.*;
-
 public class Jogadores {
-	protected int falencia = 0;
-	protected int vitoria = 0;
-	protected int dinheiro;
-	protected int territorio = 0;
+	private int id;
+	private boolean falencia = false;
+	private int territorio = 0;
+	private boolean saidaDaPrisao = false;
+	private int nota1 = 8;
+	private int nota5 = 10;
+	private int nota10 = 10;
+	private int nota50 = 10;
+	private int nota100 = 8;
+	private int nota500 = 2;
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
 
 	public int getTerritorio() {
 		return territorio;
@@ -20,16 +29,4 @@ public class Jogadores {
 		this.territorio = territorio;
 	}
 
-	public void recebeDinheiro(int dinheiro ) {
-		this.dinheiro += dinheiro;
-	}
-	
-	public void pagaJogador( int dinheiro, Jogadores outroJogador ) {
-		pagaDinheiro( dinheiro );
-		outroJogador.recebeDinheiro( dinheiro );
-	}
-	
-	public void pagaDinheiro( int dinheiro ) {
-		this.dinheiro -= dinheiro;
-	}
 }
