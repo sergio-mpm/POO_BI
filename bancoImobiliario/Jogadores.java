@@ -7,18 +7,13 @@ public class Jogadores {
 	private int id;
 	private boolean falencia = false;
 	private int territorio = 0;
-	private boolean saidaDaPrisao = false;
+	private boolean livreDaPrisao = false;
+	private int statusPrisao = 0;
 	private List<Territorio> territoriosComprados = new ArrayList();
-	private int nota1 = 8;
-	private int nota5 = 10;
-	private int nota10 = 10;
-	private int nota50 = 10;
-	private int nota100 = 8;
-	private int nota500 = 2;
 	private int dinheiro = 1000;
 
 
-	public void setId(int id) {
+	public void setId( int id ) {
 		this.id = id;
 	}
 
@@ -38,11 +33,35 @@ public class Jogadores {
 		return this.dinheiro;
 	}
 
-	public void addTerritorioComprado( Territorio territorio ){
-	    this.territoriosComprados.add( territorio );
-    }
-
     public void setDinheiro( int dinheiro ) {
 	    this.dinheiro = dinheiro;
     }
+
+	public boolean isLivreDaPrisao() {
+		return livreDaPrisao;
+	}
+
+	public void setLivreDaPrisao( boolean livreDaPrisao ) {
+		this.livreDaPrisao = livreDaPrisao;
+	}
+
+	public int getStatusPrisao() {
+		return statusPrisao;
+	}
+
+	public void setStatusPrisao( int statusPrisao ) {
+		this.statusPrisao = statusPrisao;
+	}
+
+	public void addTerritorioComprado( Territorio territorio ){
+		this.territoriosComprados.add( territorio );
+	}
+
+	public List<Territorio> getTerritoriosComprados() {
+		return territoriosComprados;
+	}
+
+	public void setTerritoriosComprados( List<Territorio> territoriosComprados ){
+		this.territoriosComprados = territoriosComprados;
+	}
 }
